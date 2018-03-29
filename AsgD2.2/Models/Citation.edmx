@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CitationsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Citations">
+          <Key>
+            <PropertyRef Name="CitationNumber" />
+          </Key>
+          <Property Name="CitationNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlateNumber" Type="text" />
+          <Property Name="BadgeNumber" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Fee" Type="money" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <EntityType Name="Officers">
+          <Key>
+            <PropertyRef Name="Badge" />
+          </Key>
+          <Property Name="Badge" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="text" />
+          <Property Name="username" Type="text" />
+          <Property Name="password" Type="text" />
+        </EntityType>
+        <EntityContainer Name="CitationsModelStoreContainer">
+          <EntitySet Name="Citations" EntityType="Self.Citations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Officers" EntityType="Self.Officers" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CitationsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Citation">
+          <Key>
+            <PropertyRef Name="CitationNumber" />
+          </Key>
+          <Property Name="CitationNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlateNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BadgeNumber" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Fee" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Officer">
+          <Key>
+            <PropertyRef Name="Badge" />
+          </Key>
+          <Property Name="Badge" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="CitationsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Citations" EntityType="Self.Citation" />
+          <EntitySet Name="Officers" EntityType="Self.Officer" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CitationsModelStoreContainer" CdmEntityContainer="CitationsEntities">
+          <EntitySetMapping Name="Citations">
+            <EntityTypeMapping TypeName="CitationsModel.Citation">
+              <MappingFragment StoreEntitySet="Citations">
+                <ScalarProperty Name="CitationNumber" ColumnName="CitationNumber" />
+                <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+                <ScalarProperty Name="BadgeNumber" ColumnName="BadgeNumber" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Officers">
+            <EntityTypeMapping TypeName="CitationsModel.Officer">
+              <MappingFragment StoreEntitySet="Officers">
+                <ScalarProperty Name="Badge" ColumnName="Badge" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

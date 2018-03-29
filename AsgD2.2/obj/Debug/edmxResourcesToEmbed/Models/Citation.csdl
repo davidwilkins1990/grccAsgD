@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CitationsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Citation">
+    <Key>
+      <PropertyRef Name="CitationNumber" />
+    </Key>
+    <Property Name="CitationNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlateNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="BadgeNumber" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="Fee" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Officer">
+    <Key>
+      <PropertyRef Name="Badge" />
+    </Key>
+    <Property Name="Badge" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="CitationsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Citations" EntityType="Self.Citation" />
+    <EntitySet Name="Officers" EntityType="Self.Officer" />
+  </EntityContainer>
+</Schema>

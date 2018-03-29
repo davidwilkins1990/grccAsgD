@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CitationsModelStoreContainer" CdmEntityContainer="CitationsEntities">
+    <EntitySetMapping Name="Citations">
+      <EntityTypeMapping TypeName="CitationsModel.Citation">
+        <MappingFragment StoreEntitySet="Citations">
+          <ScalarProperty Name="CitationNumber" ColumnName="CitationNumber" />
+          <ScalarProperty Name="PlateNumber" ColumnName="PlateNumber" />
+          <ScalarProperty Name="BadgeNumber" ColumnName="BadgeNumber" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Officers">
+      <EntityTypeMapping TypeName="CitationsModel.Officer">
+        <MappingFragment StoreEntitySet="Officers">
+          <ScalarProperty Name="Badge" ColumnName="Badge" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

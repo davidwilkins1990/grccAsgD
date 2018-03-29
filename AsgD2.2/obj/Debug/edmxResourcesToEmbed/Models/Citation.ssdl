@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CitationsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Citations">
+    <Key>
+      <PropertyRef Name="CitationNumber" />
+    </Key>
+    <Property Name="CitationNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlateNumber" Type="text" />
+    <Property Name="BadgeNumber" Type="int" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Fee" Type="money" />
+    <Property Name="Description" Type="text" />
+  </EntityType>
+  <EntityType Name="Officers">
+    <Key>
+      <PropertyRef Name="Badge" />
+    </Key>
+    <Property Name="Badge" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="text" />
+    <Property Name="username" Type="text" />
+    <Property Name="password" Type="text" />
+  </EntityType>
+  <EntityContainer Name="CitationsModelStoreContainer">
+    <EntitySet Name="Citations" EntityType="Self.Citations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Officers" EntityType="Self.Officers" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
